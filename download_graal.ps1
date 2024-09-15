@@ -5,9 +5,10 @@ $GraalFile = "${JavaPath}\jvm.zip"
 
 $FileGlob = $null # has version numbers after that we cannot know ahead of time (e.g. graalvm-jdk-17.0.11+9)
 
-Write-Host "What Minecraft version will you be using?"
-Write-Host "a. 1.16.5"
-Write-Host "b. 1.18.2 or newer"
+Write-Host "What Java version will you be using?"
+Write-Host "a. java jdk 11"
+Write-Host "b. java jdk 17"
+Write-Host "c. java jdk 21"
 while ($true) {
     $Response = (Read-Host -Prompt "Enter your selection").ToLowerInvariant()
     if ($Response -eq "a") {
@@ -16,6 +17,11 @@ while ($true) {
         break
     }
     elseif ($Response -eq "b") {
+        $GraalUrl = "https://download.oracle.com/graalvm/17/latest/graalvm-jdk-17_windows-x64_bin.zip"
+        $FileGlob = "graalvm-jdk-17"
+        break
+    }
+    elseif ($Response -eq "c") {
         $GraalUrl = "https://download.oracle.com/graalvm/21/latest/graalvm-jdk-21_windows-x64_bin.zip"
         $FileGlob = "graalvm-jdk-21"
         break
